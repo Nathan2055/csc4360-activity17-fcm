@@ -23,15 +23,13 @@ class MessagingTutorial extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Firebase Messaging',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyHomePage(title: 'Firebase Messaging'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, this.title});
-
-  final String? title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -40,27 +38,28 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   late FirebaseMessaging messaging;
   String? notificationText;
+
   @override
   void initState() {
     super.initState();
     messaging = FirebaseMessaging.instance;
-    messaging.subscribeToTopic("messaging");
+    messaging.subscribeToTopic('messaging');
     messaging.getToken().then((value) {
       print(value);
     });
     FirebaseMessaging.onMessage.listen((RemoteMessage event) {
-      print("message recieved");
+      print('message recieved');
       print(event.notification!.body);
       print(event.data.values);
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Notification"),
+            title: const Text('Notification'),
             content: Text(event.notification!.body!),
             actions: [
               TextButton(
-                child: Text("Ok"),
+                child: const Text('OK'),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
@@ -78,8 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title!)),
-      body: Center(child: Text("Messaging Tutorial")),
+      appBar: AppBar(title: const Text('Firebase Messaging')),
+      body: Center(child: const Text('Messaging Tutorial')),
     );
   }
 }
