@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "640184459240",
+    "project_id": "csc4360-activity17-fcm",
+    "storage_bucket": "csc4360-activity17-fcm.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640184459240:android:fec440ca7f30db65f18e5d",
+        "android_client_info": {
+          "package_name": "com.example.fcmdemo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWvIznm6NaxJeL6eFGCyYjsxQF0hSHo3I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
