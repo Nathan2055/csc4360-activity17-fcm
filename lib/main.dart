@@ -42,15 +42,25 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+
+    // Set up Firebase Messaging
     messaging = FirebaseMessaging.instance;
     messaging.subscribeToTopic('messaging');
+
+    // Get device FCM token and print to console
     messaging.getToken().then((value) {
+      print('Device FCM token:');
       print(value);
     });
+
+    // Handle an incoming notification
     FirebaseMessaging.onMessage.listen((RemoteMessage event) {
-      print('message recieved');
+      // Print raw notification data to console
+      print('Message recieved:');
+      print(event.notification!.title);
       print(event.notification!.body);
-      print(event.data.values);
+      print(event.data.values.toList().toString());
+
       showDialog(
         context: context,
         builder: (BuildContext context) {
