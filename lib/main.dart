@@ -64,23 +64,92 @@ class _MyHomePageState extends State<MyHomePage> {
       print(event.data['type']);
       print(event.data['category']);
 
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Notification'),
-            content: Text(event.notification!.body!),
-            actions: [
-              TextButton(
-                child: const Text('OK'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
+      var title = event.notification!.title;
+      var body = event.notification!.body;
+      var type = event.data['type'];
+      var category = event.data['category'];
+
+      if (type == 'important') {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              icon: const Icon(Icons.warning),
+              backgroundColor: Colors.red,
+              title: Text(title!),
+              content: Text(body!),
+              actions: [
+                TextButton(
+                  child: const Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      } else if (category == 'motivation') {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              icon: const Icon(Icons.lightbulb),
+              backgroundColor: Colors.blue,
+              title: Text(title!),
+              content: Text(body!),
+              actions: [
+                TextButton(
+                  child: const Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      } else if (type == 'wisdom') {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              icon: const Icon(Icons.lightbulb),
+              backgroundColor: Colors.deepPurple,
+              title: Text(title!),
+              content: Text(body!),
+              actions: [
+                TextButton(
+                  child: const Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              icon: const Icon(Icons.info),
+              backgroundColor: Colors.grey,
+              title: Text(title!),
+              content: Text(body!),
+              actions: [
+                TextButton(
+                  child: const Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
     });
     FirebaseMessaging.onMessageOpenedApp.listen((message) {
       print('Message clicked!');
