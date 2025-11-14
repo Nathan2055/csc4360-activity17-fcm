@@ -59,7 +59,10 @@ class _MyHomePageState extends State<MyHomePage> {
       print('Message recieved:');
       print(event.notification!.title);
       print(event.notification!.body);
+      print(event.data.toString());
       print(event.data.values.toList().toString());
+      print(event.data['type']);
+      print(event.data['category']);
 
       showDialog(
         context: context,
